@@ -85,7 +85,7 @@ h3 {
   position: relative;
   display: flex;
   align-items: flex-start;
-  height: 713px;
+  height: 523px;
   padding: 0;
   width: 1425px;
   overflow: auto;
@@ -144,9 +144,8 @@ h3 {
 .tooltip {
   position: absolute;
   left: 50%;
-  top: calc(152px + 713px);
-  transform: translateX(-40.9%);
-  margin-top: 185px;
+  transform: translateX(-584px);
+  margin-top: 171px;
   padding: 10px;
 
   width: 1405px;
@@ -480,32 +479,20 @@ h3 {
   }
 }
 
-
 @media (max-width: 1440px) {
   .app-container {
     transform: scale(0.7);
   }
-
-.frame{
-height: 523px;
 }
-
-.tooltip{
-  transform: translateX(-583px);
-  margin-top: 184px;
-  width: 1405px;
-}
-}
-
 
 @media (max-width: 1200px) {
   .app-container{
-    transform: scale(0.6);
+    transform: scale(0.7);
   }
 }
 
 @media (max-width: 1000px) {
   .app-container{
-    transform: scale(0.5);
+    transform: scale(0.6);
   }
 }
