@@ -480,11 +480,23 @@ h3 {
   }
 }
 
+
 @media (max-width: 1440px) {
   .app-container {
     transform: scale(0.7);
   }
+
+.frame{
+height: 523px;
 }
+
+.tooltip{
+  transform: translateX(-583px);
+  margin-top: 184px;
+  width: 1405px;
+}
+}
+
 
 @media (max-width: 1200px) {
   .app-container{
