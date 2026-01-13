@@ -476,23 +476,27 @@ h3 {
 @media (max-width: 1600px) {
   .app-container {
     transform: scale(0.9);
+    transform-origin: top center;
   }
 }
 
 @media (max-width: 1440px) {
   .app-container {
+    transform-origin: top center;
     transform: scale(0.7);
   }
 }
 
 @media (max-width: 1200px) {
-  .app-container{
+  .app-container {
+    transform-origin: top center;
     transform: scale(0.7);
   }
 }
 
 @media (max-width: 1000px) {
-  .app-container{
+  .app-container {
+    transform-origin: top center;
     transform: scale(0.6);
   }
 }
