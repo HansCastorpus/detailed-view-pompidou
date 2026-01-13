@@ -11,6 +11,9 @@
 :root {
   --background-color: #221e1f;
   --text-color: #d4cfc8;
+  --border-color: #a19d94;
+  --border-width: 1px;
+  --border-radius: 5px;
 }
 
 /* body {
@@ -24,7 +27,7 @@ body::after {
   top: 0;
   bottom: 0;
   width: 5px;
-  background-color: #000000;
+  background-color: var(--border-color);
   z-index: 9999;
   pointer-events: none;
 }
@@ -44,8 +47,6 @@ html {
   /* border: #000000 1px solid; */
   z-index: 10000;
   background-color: var(--background-color);
-  border-left: #000000 10px;
-  border-right: #000000 10px;
 }
 
 .MainBody {
@@ -53,7 +54,9 @@ html {
   flex-direction: column; /* stack legend + frame vertically */
   align-items: center; /* optional */
   background-color: #0c1525;
-  border: #000000 5px solid;
+  border: var(--border-color) var(--border-width) solid;
+  border-radius: 0px 20px 0px 0px;
+
 }
 
 H1 {
@@ -79,6 +82,7 @@ h3 {
 }
 
 .frame {
+  position: relative;
   display: flex;
   align-items: flex-start;
   height: 713px;
@@ -87,6 +91,7 @@ h3 {
   overflow: auto;
   flex-direction: column;
   overflow-x: hidden;
+  overflow-y: visible;
   /* border: #ffae00 3px solid; */
 }
 
@@ -137,20 +142,32 @@ h3 {
 }
 
 .tooltip {
-  display: flex;
-  align-items: flex-start !important;
-  justify-content: center !important;
-  position: absolute !important;
-  width: 1405px;
-  font: 20px sans-serif;
-  color: var(--text-color);
-  border: #000000 5px solid;
+  position: absolute;
+  left: 50%;
+  top: calc(152px + 713px);
+  transform: translateX(-40.9%);
+  margin-top: 185px;
   padding: 10px;
-  background: var(--background-color);
-  pointer-events: none;
+
+  width: 1405px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   gap: 15px;
-  margin-left: 0px;
+
+  font-family: "Jost", sans-serif;
+  font-size: 20px;
+
+  color: var(--text-color);
+  background: var(--background-color);
+  border: var(--border-color) var(--border-width) solid;
+  border-radius: 0px 0px 20px 20px; 
+
+  opacity: 0;
+  pointer-events: none;
+  z-index: 500;
 }
+
 
 .flag {
   padding-top: 8px;
@@ -212,7 +229,8 @@ h3 {
   font-size: 20px;
   color: var(--text-color);
   background-color: var(--background-color);
-  border-bottom: #000000 5px solid;
+  border-bottom: var(--border-color) var(--border-width) solid;
+  border-radius: 0px 20px 0px 0px;
 }
 
 .typeAchat {
@@ -385,22 +403,26 @@ h3 {
 }
 
 .Header {
-  border: #000000 5px solid;
+  border: var(--border-color) var(--border-width) solid;
   padding: 10px;
   font-family: "Jost";
   color: var(--text-color);
   background-color: var(--background-color);
+  border-radius: 20px 0px 0px 0px;
 }
 
 .HeaderImage {
   max-width: 100%;
   min-width: 150px;
+  border-radius: 10px 0px 0px 0px;
+
 }
 
 .filter-panel {
   color: var(--text-color);
   background-color: var(--background-color);
-  border: #000000 5px solid;
+  border: var(--border-color) var(--border-width) solid;
+  border-radius: 0px 0px 0px 20px;
   width: 250px;
   padding: 10px;
   box-sizing: border-box;
@@ -448,4 +470,30 @@ h3 {
 
 .type {
   text-transform: uppercase;
+}
+
+/* SCALE RESPONSIVNESS */
+
+@media (max-width: 1600px) {
+  .app-container {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 1400px) {
+  .app-container {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 1200px) {
+  .app-container{
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 1000px) {
+  .app-container{
+    transform: scale(0.6);
+  }
 }
