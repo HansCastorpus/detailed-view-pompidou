@@ -212,18 +212,12 @@ const colorGendre = d3
 
 // Tooltip
 const tooltip = d3
-  .select("body")
+  .select(".MainBody")
   .append("div")
   .attr("class", "tooltip")
   .style("opacity", 0)
-  .style("position", "absolute")
-  .style("transform", "translate(-50%, 0)")
-  .style("pointer-events", "none")
-  .style("display", "flex")
-  .style("align-items", "center")
-  .style("justify-content", "center")
-  .style("text-align", "center")
-  .style("font-family", '"Jost", sans-serif');
+  .style("pointer-events", "none");
+
 
 // X axis scale
 var x = d3.scaleLinear().domain([1897, 2025]).range([0, width]);
@@ -276,12 +270,12 @@ function showTooltip(d) {
     </div>
   `);
 
-  const frameRect = document.querySelector(".frame").getBoundingClientRect();
-  const legendRect = document.querySelector(".legend").getBoundingClientRect();
+const frameHeight = document.querySelector(".frame").offsetHeight;
+
+tooltip.style("top", frameHeight + "px");
+
 
   tooltip
-    .style("left", frameRect.left + frameRect.width / 2 + 0 + "px")
-    .style("top", legendRect.bottom + 728 + "px")
     .transition()
     .duration(200)
     .style("opacity", 1);
