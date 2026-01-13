@@ -85,7 +85,7 @@ h3 {
   position: relative;
   display: flex;
   align-items: flex-start;
-  height: 523px;
+  height: 540px;
   padding: 0;
   width: 1425px;
   overflow: auto;
@@ -145,7 +145,7 @@ h3 {
   position: absolute;
   left: 50%;
   transform: translateX(-584px);
-  margin-top: 171px;
+  margin-top: 172px;
   padding: 10px;
 
   width: 1405px;
