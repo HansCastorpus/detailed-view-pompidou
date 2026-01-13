@@ -14,7 +14,6 @@ var svg = d3
 const defs = svg.append("defs");
 
 // Left Right Half
-
 function defineHalfPattern(id, colorA, colorB, angle = 0) {
   const p = defs
     .append("pattern")
@@ -40,7 +39,6 @@ function defineHalfPattern(id, colorA, colorB, angle = 0) {
 }
 
 // Top Bottom Half
-
 function defineHalfTopPattern(id, colorA, colorB, angle = 0) {
   const p = defs
     .append("pattern")
@@ -74,66 +72,30 @@ function defineQuarterPattern(id, c1, c2, c3, c4) {
     .attr("width", 1)
     .attr("height", 1);
 
-  p.append("rect")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("width", 0.5)
-    .attr("height", 0.5)
-    .attr("fill", c1);
-  p.append("rect")
-    .attr("x", 0.5)
-    .attr("y", 0)
-    .attr("width", 0.5)
-    .attr("height", 0.5)
-    .attr("fill", c2);
-  p.append("rect")
-    .attr("x", 0)
-    .attr("y", 0.5)
-    .attr("width", 0.5)
-    .attr("height", 0.5)
-    .attr("fill", c3);
-  p.append("rect")
-    .attr("x", 0.5)
-    .attr("y", 0.5)
-    .attr("width", 0.5)
-    .attr("height", 0.5)
-    .attr("fill", c4);
+  p.append("rect").attr("x", 0).attr("y", 0).attr("width", 0.5).attr("height", 0.5).attr("fill", c1);
+  p.append("rect").attr("x", 0.5).attr("y", 0).attr("width", 0.5).attr("height", 0.5).attr("fill", c2);
+  p.append("rect").attr("x", 0).attr("y", 0.5).attr("width", 0.5).attr("height", 0.5).attr("fill", c3);
+  p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", 0.5).attr("height", 0.5).attr("fill", c4);
 }
 
 // Type of Purchase
-
 defineHalfPattern("achat", "#ffffff", "#c51130");
-
 defineHalfTopPattern("acquisition", "#ffffff", "#231f20");
-
 defineQuarterPattern("attribution", "#241f21", "#fcba2f", "#ca1131", "#012d6e");
-
 defineQuarterPattern("dation", "#ffffff", "#ca1131", "#ca1131", "#ffffff");
-
 defineHalfPattern("depot", "#ca1131", "#fcba2f");
-
 defineQuarterPattern("don", "#012d6e", "#fcba2f", "#fcba2f", "#012d6e");
-
 defineHalfPattern("donation", "#012d6e", "#fcba2f");
-
 defineHalfTopPattern("etat", "#012d6e", "#ffffff");
-
 defineQuarterPattern("fonds", "#ffffff", "#012d6e", "#012d6e", "#ffffff");
-
 defineHalfPattern("inscription", "#241f21", "#c51130");
-
 defineHalfPattern("legs", "#012d6e", "#fcba2f");
-
 defineQuarterPattern("autre", "#241f21", "#ffffff", "#ffffff", "#241f21");
 
 // Gender
-
 defineQuarterPattern("man", "#012d6e", "#0a60c6", "#0a60c6", "#012d6e");
-
 defineQuarterPattern("woman", "#c51130", "#70061d", "#70061d", "#c51130");
-
 defineQuarterPattern("group", "#fc5832", "#fcba2f", "#fcba2f", "#fc5832");
-
 defineQuarterPattern("unknown", "#aaaaaa", "#ffffff", "#ffffff", "#aaaaaa");
 
 // Fixed row spacing
@@ -197,18 +159,12 @@ const colorAcquisitionType = d3
     "url(#legs)",
     "url(#autre)",
   ])
-  
   .unknown("url(#autre)");
 
 const colorGendre = d3
   .scaleOrdinal()
   .domain(["Homme", "Femme", "Studio/ Group", "Unknown"])
-  .range([
-    "url(#man)",
-    "url(#woman)",
-    "url(#group)",
-    "url(#unknown)",
-  ]);
+  .range(["url(#man)", "url(#woman)", "url(#group)", "url(#unknown)"]);
 
 // Tooltip
 const tooltip = d3
@@ -217,7 +173,6 @@ const tooltip = d3
   .attr("class", "tooltip")
   .style("opacity", 0)
   .style("pointer-events", "none");
-
 
 // X axis scale
 var x = d3.scaleLinear().domain([1897, 2025]).range([0, width]);
@@ -240,16 +195,13 @@ function showTooltip(d) {
       <div class="image">
         <img src="image/${d.Image}" width="200" height="150">
       </div>
-          <div class="type"><strong>${d.TypeDesign}</strong> </div>
-
+      <div class="type"><strong>${d.TypeDesign}</strong> </div>
     </div>
-
     <div class="tooltip-column">
       <strong>Creation:</strong> ${d.DCU}<br>
       <strong>Acquisition:</strong> ${d.DAU}<br>
       ${d.Acquisition}<div class="rondplein"></div>
     </div>
-
     <div class="tooltip-column">
       <strong>${d.Titre}</strong><br>
       ${d.TypeDesign}
@@ -259,26 +211,20 @@ function showTooltip(d) {
       ${d.MST}
       ${d.Dimensions}
     </div>
-
     <div class="tooltip-column">
       <div class="designer">
         <strong>${d.Nom}</strong><div class="rondplein"></div>
       </div>
-       <div class="flag"><img src="image/${d.flag}" width="auto" height="25" border="0zpx black solid"></div><div>${d.Nationalite}</div>
+      <div class="flag"><img src="image/${d.flag}" width="auto" height="25" border="0zpx black solid"></div>
+      <div>${d.Nationalite}</div>
       _____ <br>
       ${d.DDN}
     </div>
   `);
 
-const frameHeight = document.querySelector(".frame").offsetHeight;
-
-tooltip.style("top", frameHeight + "px");
-
-
-  tooltip
-    .transition()
-    .duration(200)
-    .style("opacity", 1);
+  const frameHeight = document.querySelector(".frame").offsetHeight;
+  tooltip.style("top", frameHeight + "px");
+  tooltip.transition().duration(200).style("opacity", 1);
 }
 
 function hideTooltip() {
@@ -287,45 +233,15 @@ function hideTooltip() {
 
 // Highlight/reset
 function highlight(d) {
-  cercleLeft
-    .selectAll("circle")
-    .filter((e) => e.Group === d.Group)
-    .transition()
-    .duration(duration)
-    .attr("r", radiusOn);
-  cercleRight
-    .selectAll("circle")
-    .filter((e) => e.Group === d.Group)
-    .transition()
-    .duration(duration)
-    .attr("r", radiusOn);
-  lineInfo
-    .selectAll("line")
-    .filter((e) => e.Group === d.Group)
-    .transition()
-    .duration(duration)
-    .attr("stroke-width", strokeWidthMouseOn);
+  cercleLeft.selectAll("circle").filter((e) => e.Group === d.Group).transition().duration(duration).attr("r", radiusOn);
+  cercleRight.selectAll("circle").filter((e) => e.Group === d.Group).transition().duration(duration).attr("r", radiusOn);
+  lineInfo.selectAll("line").filter((e) => e.Group === d.Group).transition().duration(duration).attr("stroke-width", strokeWidthMouseOn);
 }
 
 function resetHighlight(d) {
-  cercleLeft
-    .selectAll("circle")
-    .filter((e) => e.Group === d.Group)
-    .transition()
-    .duration(duration)
-    .attr("r", radiusOff);
-  cercleRight
-    .selectAll("circle")
-    .filter((e) => e.Group === d.Group)
-    .transition()
-    .duration(duration)
-    .attr("r", radiusOff);
-  lineInfo
-    .selectAll("line")
-    .filter((e) => e.Group === d.Group)
-    .transition()
-    .duration(duration)
-    .attr("stroke-width", strokeWidthMouseOff);
+  cercleLeft.selectAll("circle").filter((e) => e.Group === d.Group).transition().duration(duration).attr("r", radiusOff);
+  cercleRight.selectAll("circle").filter((e) => e.Group === d.Group).transition().duration(duration).attr("r", radiusOff);
+  lineInfo.selectAll("line").filter((e) => e.Group === d.Group).transition().duration(duration).attr("stroke-width", strokeWidthMouseOff);
 }
 
 // Load CSV
@@ -333,20 +249,9 @@ d3.csv("data/proto.csv", function (data) {
   originalData = data;
 
   // Populate nationality filter
-  const nationalities = Array.from(
-    new Set(data.map((d) => d.Nationalite).filter((d) => d && d !== ""))
-  ).sort();
-
+  const nationalities = Array.from(new Set(data.map((d) => d.Nationalite).filter((d) => d && d !== ""))).sort();
   const natSelect = d3.select("#nationaliteFilter");
-
-  natSelect
-    .selectAll("option.nat")
-    .data(nationalities)
-    .enter()
-    .append("option")
-    .attr("class", "nat")
-    .attr("value", (d) => d)
-    .text((d) => d);
+  natSelect.selectAll("option.nat").data(nationalities).enter().append("option").attr("class", "nat").attr("value", (d) => d).text((d) => d);
 
   updateGraph(originalData);
 
@@ -354,7 +259,14 @@ d3.csv("data/proto.csv", function (data) {
   d3.select("#genderFilter").on("change", updateFilters);
   d3.select("#nomSearch").on("input", updateFilters);
   d3.select("#nationaliteFilter").on("change", updateFilters);
+
+  // SHOW TOOLTIP FOR FIRST ROW ON PAGE LOAD
+  if (originalData.length > 0) {
+    showTooltip(originalData[0]);
+  }
 });
+
+// updateFilters() and updateGraph() remain unchanged
 
 function updateFilters() {
   const selectedType = d3.select("#typeDesignFilter").property("value");
@@ -545,3 +457,4 @@ function updateGraph(data) {
       .attr("stroke-width", 2);
   });
 }
+
