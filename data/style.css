@@ -480,7 +480,7 @@ h3 {
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1440px) {
   .app-container {
     transform: scale(0.8);
   }
